@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		74138AE72B17B1F90042CCED /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74138AE62B17B1F90042CCED /* PersistenceController.swift */; };
+		746FBB7E2B16701E0004BD82 /* Main.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 746FBB7C2B16701E0004BD82 /* Main.xcdatamodeld */; };
 		74DCBC0F2B11AE84009AB697 /* UpdateAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74DCBC0E2B11AE84009AB697 /* UpdateAccountView.swift */; };
 		74DCBC112B11AEC4009AB697 /* UpdateAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74DCBC102B11AEC4009AB697 /* UpdateAccountViewModel.swift */; };
 		74DCCF542B08036A005E32F7 /* BudgetKeeper2SUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74DCCF532B08036A005E32F7 /* BudgetKeeper2SUIApp.swift */; };
@@ -24,6 +26,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		74138AE62B17B1F90042CCED /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
+		746FBB7D2B16701E0004BD82 /* Main.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Main.xcdatamodel; sourceTree = "<group>"; };
 		74DCBC0E2B11AE84009AB697 /* UpdateAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateAccountView.swift; sourceTree = "<group>"; };
 		74DCBC102B11AEC4009AB697 /* UpdateAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateAccountViewModel.swift; sourceTree = "<group>"; };
 		74DCCF502B08036A005E32F7 /* BudgetKeeper2SUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BudgetKeeper2SUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -52,6 +56,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		74138AE52B17AE680042CCED /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				746FBB7C2B16701E0004BD82 /* Main.xcdatamodeld */,
+				74138AE62B17B1F90042CCED /* PersistenceController.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
 		74DCBC0D2B11AE65009AB697 /* UpdateAccount */ = {
 			isa = PBXGroup;
 			children = (
@@ -102,6 +115,7 @@
 		74DCCF612B08079E005E32F7 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				74138AE52B17AE680042CCED /* CoreData */,
 				74DCCF6A2B080DDE005E32F7 /* AccountsRepository.swift */,
 				74DCCF6C2B0813FE005E32F7 /* MockAccoutDataBase.swift */,
 			);
@@ -255,10 +269,12 @@
 				74DCBC0F2B11AE84009AB697 /* UpdateAccountView.swift in Sources */,
 				74DCCF542B08036A005E32F7 /* BudgetKeeper2SUIApp.swift in Sources */,
 				74DCCF722B086EDE005E32F7 /* NewAccountView.swift in Sources */,
+				746FBB7E2B16701E0004BD82 /* Main.xcdatamodeld in Sources */,
 				74DCCF652B08081E005E32F7 /* Account.swift in Sources */,
 				74FB18E62B0D2B1500F1BA04 /* AccountsListViewModel.swift in Sources */,
 				74DCCF692B080916005E32F7 /* AccountDataBaseRepresentable.swift in Sources */,
 				74DCBC112B11AEC4009AB697 /* UpdateAccountViewModel.swift in Sources */,
+				74138AE72B17B1F90042CCED /* PersistenceController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -464,6 +480,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		746FBB7C2B16701E0004BD82 /* Main.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				746FBB7D2B16701E0004BD82 /* Main.xcdatamodel */,
+			);
+			currentVersion = 746FBB7D2B16701E0004BD82 /* Main.xcdatamodel */;
+			path = Main.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 74DCCF482B08036A005E32F7 /* Project object */;
 }

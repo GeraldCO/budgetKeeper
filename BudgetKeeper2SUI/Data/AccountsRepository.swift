@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreData
 
 final class AccountsRepository{
     private let db: AccountDataBaseRepresentable
@@ -14,8 +15,8 @@ final class AccountsRepository{
         self.db = db
     }
     
-    func loadAccounts() async -> [Account] {
-        //simulating a network call
+    func loadAccounts() async -> [AccountCD] {
+       //simulating a network call
         try? await Task.sleep(for: .seconds(1))
         return db.getAllAccounts()
     }

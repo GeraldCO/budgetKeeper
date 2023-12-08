@@ -9,7 +9,7 @@ import Foundation
 
 final class AccountsViewModel: ObservableObject{
 
-    @Published var accountsList: [Account] = []
+    @Published var accountsList: [AccountCD] = []
     @Published var isLoading: Bool = false
     
     private var repository: AccountsRepository

@@ -42,9 +42,9 @@ struct UpdateAccountView: View {
         }
     }
 }
-
-#Preview{
-    let repo = AccountsRepository(db: MockAccoutDataBase.shared)
-    let vm = UpdateAccountViewModel(account: Account(name: "gerald", amount: 22.3, createdAt: Date()))
-    return UpdateAccountView(viewModel: vm)
-}
+//
+//#Preview{
+//    let repo = AccountsRepository(db: MockAccoutDataBase.shared)
+//    let vm = UpdateAccountViewModel(account: Account(name: "gerald", amount: 22.3, createdAt: Date()))
+//    return UpdateAccountView(viewModel: vm)
+//}

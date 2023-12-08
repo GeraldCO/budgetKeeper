@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AccountListItem: View {
-    var account: Account
+    var account: AccountCD
     private func formattedDate(date: Date) -> String {
         
         let formatter = DateFormatter()
@@ -19,8 +19,8 @@ struct AccountListItem: View {
     var body: some View {
         HStack{
             VStack(alignment: .leading){
-                Text(account.name).font(.title)
-                Text("Created at: \(formattedDate(date: account.createdAt))")
+                Text(account.name ?? "").font(.title)
+                Text("Created at: \(formattedDate(date: account.createdAt ?? Date()))")
             }
             HStack{
                 Spacer()
@@ -43,5 +43,5 @@ struct AccountListItem: View {
 }
 
 #Preview {
-    AccountListItem(account: Account(name: "Rent", amount: 254.1, createdAt: Date()))
+    AccountListItem(account: AccountCD(entity: <#T##NSEntityDescription#>, insertInto: <#T##NSManagedObjectContext?#>))
 }

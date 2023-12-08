@@ -9,7 +9,7 @@ import Foundation
 
 protocol AccountDataBaseRepresentable{
     
-    func getAllAccounts() -> [Account]
+    func getAllAccounts() -> [AccountCD]
     
     func insertAccount(_ newAccount: Account) -> Bool
     

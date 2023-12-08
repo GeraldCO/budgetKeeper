@@ -33,8 +33,8 @@ struct NewAccountView: View {
     }
 }
 
-#Preview {
-    let repo = AccountsRepository(db: MockAccoutDataBase.shared)
-    let vm = NewAccountViewModel(repository: repo)
-    return NewAccountView(viewModel: vm)
-}
+//#Preview {
+//    let repo = AccountsRepository(db: MockAccoutDataBase.shared)
+//    let vm = NewAccountViewModel(repository: repo)
+//    return NewAccountView(viewModel: vm)
+//}

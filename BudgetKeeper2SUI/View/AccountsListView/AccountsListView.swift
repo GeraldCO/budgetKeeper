@@ -9,6 +9,14 @@ import SwiftUI
 
 struct AccountsListView: View {
     @ObservedObject var viewModel: AccountsViewModel
+    @Environment(\.managedObjectContext) var managedObjectContext
+    
+    @FetchRequest(sortDescriptors: [
+        SortDescriptor(\.name),
+        SortDescriptor(\.amount)
+    ]) var accounts: FetchedResults<AccountCD>
+    
+    
     
     @ViewBuilder
     private var topHeader: some View {
@@ -16,18 +24,18 @@ struct AccountsListView: View {
             HStack{
                 Spacer()
                 
-                NavigationLink(destination: {
-                    //navigate
-                    let repo = AccountsRepository(db: MockAccoutDataBase.shared)
-                    let vm = NewAccountViewModel(repository: repo)
-                    NewAccountView(viewModel: vm)
-                }, label: {
-                    Image(systemName: "plus")
-                        .renderingMode(.template)
-                        .foregroundStyle(.purple)
-                        .imageScale(.large)
-                        .frame(width: 40, height: 40)
-                })
+//                NavigationLink(destination: {
+//                    //navigate
+//                    let repo = AccountsRepository(db: MockAccoutDataBase)
+//                    let vm = NewAccountViewModel(repository: repo)
+//                    NewAccountView(viewModel: vm)
+//                }, label: {
+//                    Image(systemName: "plus")
+//                        .renderingMode(.template)
+//                        .foregroundStyle(.purple)
+//                        .imageScale(.large)
+//                        .frame(width: 40, height: 40)
+//                })
             }
             
             //Title
@@ -41,7 +49,7 @@ struct AccountsListView: View {
         offsets.forEach { index in
             let account = viewModel.accountsList[index]
             Task {
-                let success = await viewModel.deleteAccount(account.id)
+                let success = await viewModel.deleteAccount(account.id!)
                 if success {
                     print("Account successfully deleted")
                 } else {
@@ -74,7 +82,10 @@ struct AccountsListView: View {
             VStack{
                 topHeader
                 
-                accountsList
+                
+                List(accounts) { account in
+                    Text(account.name ?? "Unknown")
+                }
                 Spacer()
             }.onAppear(){
                 Task{
@@ -87,7 +98,9 @@ struct AccountsListView: View {
 
 struct ContentView_Previews: PreviewProvider{
     static var previews: some View {
-        let repo = AccountsRepository(db: MockAccoutDataBase.shared)
+        let persistenceController = PersistenceController.shared
+        let context = persistenceController.container.viewContext
+        let repo = AccountsRepository(db: MockAccoutDataBase(context: context))
         let vm = AccountsViewModel(repository: repo)
         AccountsListView(viewModel: vm)
     }

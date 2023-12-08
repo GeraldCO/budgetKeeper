@@ -6,14 +6,25 @@
 //
 
 import Foundation
+import CoreData
 
 final class UpdateAccountViewModel : ObservableObject {
     @Published var account : Account
-    private let repository = AccountsRepository(db: MockAccoutDataBase.shared)
+    
+    
+    let persistenceController = PersistenceController.shared
+    let context: NSManagedObjectContext
+    let mockAccountDatabase: MockAccoutDataBase
+    
+    
+    private let repository : AccountsRepository
     @Published var isLoading = false
     
     init(account: Account) {
         self.account = account
+        self.context = persistenceController.container.viewContext
+        self.mockAccountDatabase = MockAccoutDataBase(context: context)
+        self.repository = AccountsRepository(db: mockAccountDatabase)
     }
     
     func updateAccpount(_ id: UUID,_ amount: String) async -> Bool{

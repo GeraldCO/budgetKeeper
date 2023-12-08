@@ -6,22 +6,29 @@
 //
 
 import Foundation
+import CoreData
+import SwiftUI
 
 final class MockAccoutDataBase: AccountDataBaseRepresentable{
+    let context: NSManagedObjectContext
     
-    
-    static var shared = MockAccoutDataBase()
-    
-    private init(){ }
+    init(context: NSManagedObjectContext){
+        self.context = context
+    }
     
     private var accountsList: [Account] = [
-        Account(name: "Cable", amount:  15.2, createdAt: Date()),
-        Account(name: "Internet", amount:  24.5, createdAt: Date()),
-        Account(name: "Grocery", amount:  154.22, createdAt: Date())
+        
     ]
     
-    func getAllAccounts() -> [Account] {
-        return accountsList
+    func getAllAccounts() -> [AccountCD] {
+        let fetchRequest: NSFetchRequest<AccountCD> = AccountCD.fetchRequest()
+        do{
+            let accounts = try context.fetch(fetchRequest)
+            return accounts
+        } catch {
+            print("failed to fetch accounts: \(error)")
+            return []
+        }
     }
     
     func insertAccount(_ newAccount: Account) -> Bool {
